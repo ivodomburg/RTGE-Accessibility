@@ -1,0 +1,496 @@
+<!-- Dit voorbeeld toont hoe je je bestaande dekking kan aanpassen, met meer informatie die voor alle dekkingen kan worden weergegeven. -->
+<!--
+
+ TODO:
+ - focus binnen modal houden
+ - onnodige aria-attributen verwijderen
+ 
+ - winkelmandje toevoegen met role=status en aria-live
+ -->
+ <html lang="nl">
+
+ <head>
+     <title>Wijziging doorgeven voor Autoverzekering Dacia Duster GT-564-B</title>
+     <style>
+         /* Voeg hier je stijlen toe */
+         .modal {
+             display: none;
+             /* Verborgen standaard */
+             position: fixed;
+             /* Blijft op dezelfde plaats */
+             z-index: 1000;
+             /* Zorgt ervoor dat het boven andere elementen ligt */
+             left: 0;
+             top: 0;
+             width: 100%;
+             height: 100%;
+             overflow: auto;
+             /* Voeg scroll toe als de inhoud groter is dan het scherm */
+             background-color: rgba(0, 0, 0, 0.5);
+             /* Semi-transparante achtergrond */
+         }
+ 
+         .modal-content {
+             background-color: #fefefe;
+             margin: 15% auto;
+             /* 15% vanaf de bovenkant en gecentreerd */
+             padding: 20px;
+             border: 1px solid #888;
+             width: 80%;
+             /* Breedte van de modal */
+             max-width: 600px;
+             /* Maximale breedte van de modal */
+             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+             border-radius: 10px;
+         }
+ 
+         .close {
+             color: #aaa;
+             float: right;
+             font-size: 28px;
+             font-weight: bold;
+         }
+ 
+         .close:hover,
+         .close:focus {
+             color: black;
+             text-decoration: none;
+             cursor: pointer;
+         }
+ 
+         details[open] {
+             background-color: #ffffcc;
+         }
+ 
+         .visually-hidden {
+             border: 0;
+             clip: rect(0 0 0 0);
+             height: 1px;
+             margin: -1px;
+             overflow: hidden;
+             padding: 0;
+             position: absolute;
+             width: 1px;
+         }
+     </style>
+ </head>
+ 
+ <body>
+     <h1>Dekking autoverzekering wijzigen</h1>
+     <h2>Uw dekking</h2>
+     <p>WA basisdekking, zonder aanvullende dekkingen. De maandelijkse premie is &euro;
+         30,25.</p>
+     <h3>Basisdekking</h3>
+     <p>U heeft momenteel de WA basisdekking. Dit is onze eenvoudigste basisdekking en dekt schade die u aan
+         anderen toebrengt.</p>
+     <form>
+         <fieldset>
+             <legend>Kies uw basisdekking</legend>
+             <div>
+                 <input type="radio" id="basis" name="dekkingNiveau" value="basis" checked>
+                 <label for="basis">
+                     WA: &euro; 30,35 per maand
+                     <div>Voor oudere voertuigen of als je niet zoveel rijdt; dekt schade die u aan anderen
+                         toebrengt.</div>
+                     <ul>
+                         <li>Aansprakelijkheidsdekking</li>
+                     </ul>
+                     <button type="button" class="expand-btn" id="aansprakelijkheidsdekking" aria-expanded="false"
+                         aria-controls="modal">Meer
+                         informatie <span class="visually-hidden">over onze aansprakelijkheidsdekking</span></button>
+                     <div id="modal-aansprakelijkheidsdekking" class="modal" role="dialog" aria-modal="true">
+                         <div class="modal-content">
+                            <button class="close">
+                                &times;<span class="visually-hidden">Sluiten</span>
+                            </button>
+                             <h3>WA basisdekking</h3>
+                             <p>Een WA-verzekering (Wettelijke Aansprakelijkheid) dekt schade die je aan anderen toebrengt bij een ongeval. Deze verzekering is verplicht voor alle voertuigeigenaren en biedt financiële bescherming tegen claims van derden. Het dekt zowel materiële schade als letselschade die je veroorzaakt. Echter, schade aan je eigen voertuig of jezelf wordt niet gedekt. Deze verzekering is vooral geschikt voor oudere voertuigen of als je niet veel rijdt.</p>
+                             <h4>Wat je krijgt:</h4>
+                             <details id="details-aansprakelijkheidsdekking" open>
+                                 <summary>Aansprakelijkheidsdekking</summary>
+                                 <p>De aansprakelijkheidsdekking is een verplichte verzekering die de kosten dekt van
+                                     schade die
+                                     u
+                                     aan anderen toebrengt bij een ongeval. Dit omvat zowel materiële schade als
+                                     letselschade.
+                                 </p>
+                                 <h5>Materiële schade:</h5>
+                                 <p>Dit betreft schade aan eigendommen van anderen, zoals voertuigen, gebouwen, en andere
+                                     objecten.</p>
+                                 <h5>Letselschade:</h5>
+                                 <p>Dit betreft medische kosten, inkomensverlies, en andere kosten die voortvloeien uit
+                                     lichamelijk letsel dat u aan anderen toebrengt.</p>
+                             </details>
+                         </div>
+                     </div>
+                 </label>
+             </div>
+             <div>
+                 <input type="radio" id="standaard" name="dekkingNiveau" value="standaard">
+                 <label for="standaard">
+                     WA Plus: &euro; 34,77 per maand
+                     <div>Zekerheid voor als je regelmatig op de weg zit; dekt o.a. schade van inzittenden.</div>
+                     <ul>
+                         <li>Aansprakelijkheidsdekking</li>
+                         <li>Schadeverzekering inzittenden</li>
+                         <li>Rechtsbijstand</li>
+                         <li>Ruitschade</li>
+                     </ul>
+                     <button type="button" class="expand-btn" id="schadeverzekeringinzittenden" aria-expanded="false"
+                         aria-controls="modal">Meer
+                         informatie <span class="visually-hidden">over onze dekkingen</span></button>
+                     <div id="modal-schadeverzekeringinzittenden" class="modal" role="dialog" aria-modal="true">
+                         <div class="modal-content">
+                            <button class="close">
+                                &times;<span class="visually-hidden">Sluiten</span>
+                            </button>
+                             <h3>WA Plus basisdekking</h3>
+                             <p>Een WA Plus-verzekering biedt extra zekerheid voor mensen die regelmatig op de weg zitten. Naast de basisdekking van een WA-verzekering, dekt WA Plus ook schade aan je eigen voertuig door bijvoorbeeld brand, diefstal of storm. Bovendien biedt het dekking voor schade aan inzittenden, zoals medische kosten en letselschade. Dit type verzekering is ideaal voor wie meer bescherming wil dan alleen de wettelijke aansprakelijkheid. Het biedt een goede balans tussen uitgebreide dekking en betaalbaarheid.</p>
+                             <h4>Wat je krijgt:</h4>
+                             <details id="details-aansprakelijkheidsdekking">
+                                 <summary>Aansprakelijkheidsdekking</summary>
+                                 <p>De aansprakelijkheidsdekking is een verplichte verzekering die de kosten dekt van
+                                     schade die
+                                     u
+                                     aan anderen toebrengt bij een ongeval. Dit omvat zowel materiële schade als
+                                     letselschade.
+                                 </p>
+                                 <h5>Materiële schade:</h5>
+                                 <p>Dit betreft schade aan eigendommen van anderen, zoals voertuigen, gebouwen, en andere
+                                     objecten.</p>
+                                 <h5>Letselschade:</h5>
+                                 <p>Dit betreft medische kosten, inkomensverlies, en andere kosten die voortvloeien uit
+                                     lichamelijk letsel dat u aan anderen toebrengt.</p>
+                             </details>
+                             <details id="details-schadeverzekeringinzittenden">
+                                 <summary>Schadeverzekering inzittenden</summary>
+                                 <p>De schadeverzekering inzittenden vergoedt medische kosten en schade aan persoonlijke
+                                     eigendommen van passagiers in uw voertuig, ongeacht wie schuldig is aan het ongeval.
+                                 </p>
+                                 <h5>Medische kosten:</h5>
+                                 <p>Dit omvat kosten voor ziekenhuisopname, behandelingen, en revalidatie van passagiers.
+                                 </p>
+                                 <h5>Schade aan persoonlijke eigendommen:</h5>
+                                 <p>Dit betreft schade aan bezittingen van passagiers, zoals laptops, telefoons, en
+                                     andere
+                                     waardevolle items.</p>
+                             </details>
+                             <details>
+                                 <summary>Rechtsbijstand</summary>
+                                 <p>De rechtsbijstandverzekering biedt juridische hulp bij geschillen na een ongeval. Dit
+                                     kan
+                                     variëren van het verhalen van schade op de tegenpartij tot het verdedigen tegen
+                                     onterechte
+                                     claims.</p>
+                                 <h5>Juridische hulp:</h5>
+                                 <p>Dit omvat advies van juristen, juridische procedures, en de kosten van rechtszaken.
+                                 </p>
+                                 <h5>Geschillen:</h5>
+                                 <p>Dit kan betrekking hebben op aansprakelijkheid, schadevergoeding, en andere
+                                     juridische
+                                     kwesties die voortvloeien uit een ongeval.</p>
+                             </details>
+                             <details>
+                                 <summary>Ruitschade</summary>
+                                 <p>De ruitschadeverzekering dekt de kosten van reparatie of vervanging van autoruiten
+                                     die
+                                     beschadigd zijn door bijvoorbeeld steenslag of vandalisme.</p>
+                                 <h5>Reparatie:</h5>
+                                 <p>Dit omvat het herstellen van kleine beschadigingen aan de ruiten, zoals sterretjes en
+                                     barsten.</p>
+                                 <h5>Vervanging:</h5>
+                                 <p>Dit betreft het volledig vervangen van ruiten die niet meer te repareren zijn.</p>
+                             </details>
+                         </div>
+                 </label>
+             </div>
+             <div>
+                 <input type="radio" id="premie" name="dekkingNiveau" value="premie">
+                 <label for="premie">
+                     All-Risk: &euro; 40,78 per maand
+                     <div>Volledig ontzorgd; dekt ook schade aan uw eigen voertuig.</div>
+                     <ul>
+                         <li>Aansprakelijkheidsdekking</li>
+                         <li>Schadeverzekering inzittenden</li>
+                         <li>Rechtsbijstand</li>
+                         <li>Ruitschade</li>
+                         <li>Allriskdekking</li>
+                     </ul>
+                     <button type="button" class="expand-btn" id="allriskdekking" aria-expanded="false"
+                         aria-controls="modal">Meer
+                         informatie <span class="visually-hidden">over onze dekkingen</span></button>
+                     <div id="modal-allriskdekking" class="modal" role="dialog" aria-modal="true">
+                         <div class="modal-content">
+                            <button class="close">
+                                &times;<span class="visually-hidden">Sluiten</span>
+                            </button>
+                             <h3>All-Risk basisdekking</h3>
+                             <p>Een All-risk verzekering biedt de meest uitgebreide dekking voor je voertuig. Naast de dekking van een WA en WA Plus verzekering, dekt All-risk ook schade aan je eigen voertuig, ongeacht wie de schuldige is. Dit omvat schade door aanrijdingen, vandalisme, en zelfs eigen fouten. Het biedt volledige gemoedsrust voor wie volledig ontzorgd wil zijn. Deze verzekering is ideaal voor nieuwe of waardevolle voertuigen en voor mensen die maximale bescherming willen.</p>
+                             <h4>Wat je krijgt:</h4>
+                             <details id="details-aansprakelijkheidsdekking">
+                                 <summary>Aansprakelijkheidsdekking</summary>
+                                 <p>De aansprakelijkheidsdekking is een verplichte verzekering die de kosten dekt van
+                                     schade die
+                                     u
+                                     aan anderen toebrengt bij een ongeval. Dit omvat zowel materiële schade als
+                                     letselschade.
+                                 </p>
+                                 <h5>Materiële schade:</h5>
+                                 <p>Dit betreft schade aan eigendommen van anderen, zoals voertuigen, gebouwen, en andere
+                                     objecten.</p>
+                                 <h5>Letselschade:</h5>
+                                 <p>Dit betreft medische kosten, inkomensverlies, en andere kosten die voortvloeien uit
+                                     lichamelijk letsel dat u aan anderen toebrengt.</p>
+                             </details>
+                             <details id="details-schadeverzekeringinzittenden">
+                                 <summary>Schadeverzekering inzittenden</summary>
+                                 <p>De schadeverzekering inzittenden vergoedt medische kosten en schade aan persoonlijke
+                                     eigendommen van passagiers in uw voertuig, ongeacht wie schuldig is aan het ongeval.
+                                 </p>
+                                 <h5>Medische kosten:</h5>
+                                 <p>Dit omvat kosten voor ziekenhuisopname, behandelingen, en revalidatie van passagiers.
+                                 </p>
+                                 <h5>Schade aan persoonlijke eigendommen:</h5>
+                                 <p>Dit betreft schade aan bezittingen van passagiers, zoals laptops, telefoons, en
+                                     andere
+                                     waardevolle items.</p>
+                             </details>
+                             <details>
+                                 <summary>Rechtsbijstand</summary>
+                                 <p>De rechtsbijstandverzekering biedt juridische hulp bij geschillen na een ongeval. Dit
+                                     kan
+                                     variëren van het verhalen van schade op de tegenpartij tot het verdedigen tegen
+                                     onterechte
+                                     claims.</p>
+                                 <h5>Juridische hulp:</h5>
+                                 <p>Dit omvat advies van juristen, juridische procedures, en de kosten van rechtszaken.
+                                 </p>
+                                 <h5>Geschillen:</h5>
+                                 <p>Dit kan betrekking hebben op aansprakelijkheid, schadevergoeding, en andere
+                                     juridische
+                                     kwesties die voortvloeien uit een ongeval.</p>
+                             </details>
+                             <details>
+                                 <summary>Ruitschade</summary>
+                                 <p>De ruitschadeverzekering dekt de kosten van reparatie of vervanging van autoruiten
+                                     die
+                                     beschadigd zijn door bijvoorbeeld steenslag of vandalisme.</p>
+                                 <h5>Reparatie:</h5>
+                                 <p>Dit omvat het herstellen van kleine beschadigingen aan de ruiten, zoals sterretjes en
+                                     barsten.</p>
+                                 <h5>Vervanging:</h5>
+                                 <p>Dit betreft het volledig vervangen van ruiten die niet meer te repareren zijn.</p>
+                             </details>
+                             <details id="details-allriskdekking">
+                                 <summary>Allriskdekking</summary>
+                                 <p>De allriskdekking dekt vrijwel alle schade aan uw eigen voertuig, ongeacht de
+                                     oorzaak. Dit
+                                     omvat schade door aanrijdingen, vandalisme, diefstal, brand en natuurrampen.</p>
+                                 <h5>Aanrijdingen:</h5>
+                                 <p>Dit betreft schade aan uw voertuig door botsingen met andere voertuigen of objecten.
+                                 </p>
+                                 <h5>Vandalisme:</h5>
+                                 <p>Dit betreft opzettelijke beschadiging van uw voertuig door derden.</p>
+                                 <h5>Diefstal:</h5>
+                                 <p>Dit betreft de kosten van het vervangen van uw voertuig als het gestolen wordt.</p>
+                                 <h5>Brand:</h5>
+                                 <p>Dit betreft schade door brand, ongeacht de oorzaak.</p>
+                                 <h5>Natuurrampen:</h5>
+                                 <p>Dit betreft schade door natuurrampen zoals overstromingen, stormen, en aardbevingen.
+                                 </p>
+                             </details>
+                         </div>
+                 </label>
+             </div>
+         </fieldset>
+         <fieldset id="eigenrisico" hidden>
+             <legend>Kies uw eigen risico</legend>
+             <input type="radio" id="ir0" name="eigenRisico" value="0">
+             <label for="ir0">&euro; 0,-</label>
+             <input type="radio" id="ir150" name="eigenRisico" value="150" checked>
+             <label for="ir150">&euro; 150,-</label>
+             <input type="radio" id="ir300" name="eigenRisico" value="300">
+             <label for="ir300">&euro; 300,-</label>
+             <input type="radio" id="ir450" name="eigenRisico" value="450">
+             <label for="ir450">&euro; 450,-</label>
+         </fieldset>
+         <h3>Extra dekkingen</h3>
+         <p>U heeft momenteel geen extra dekkingen.</p>
+         <fieldset>
+             <legend>Kies uw extra dekkingen</legend>
+             <div>
+                 <div id="exclusief">Let op: Pechhulp is alleen beschikbaar bij WA Plus en All-Risk</div>
+                 <ul>
+                     <li>
+                         <input type="checkbox" id="pechhulp" name="extraDekking" value="pechhulp">
+                         <label for="pechhulp">Pechhulp: &euro; 10,96 per maand
+                             <p>Hulp bij pech onderweg.</p>
+                         </label>
+                         <button type="button" class="expand-btn" id="pechhulp" aria-expanded="false"
+                             aria-controls="pechhulpDesc">Meer
+                             informatie <span class="visually-hidden">over onze pechhulp dekking</span></button>
+                         <div id="modal-pechhulp" class="modal" role="dialog" aria-modal="true">
+                             <div class="modal-content">
+                                <button class="close">
+                                    &times;<span class="visually-hidden">Sluiten</span>
+                                </button>
+                                 <h3>Pechhulp dekking</h3>
+                                 <p>Met de pechhulpdekking krijgt u hulp bij pech onderweg, zoals het slepen van uw
+                                     voertuig naar
+                                     een garage of het verhelpen van kleine problemen ter plaatse.</p>
+                             </div>
+                         </div>
+                     </li>
+                     <li>
+                         <input type="checkbox" id="vervangendVervoer" name="extraDekking" value="vervangendVervoer">
+                         <label for="vervangendVervoer">Vervangend Vervoer: &euro; 4,24 per maand
+                             <p>Vervangend vervoer bij schade. </p>
+                         </label>
+                         <button type="button" class="expand-btn" id="vervangendvervoer" aria-expanded="false"
+                             aria-controls="vervangendVervoerDesc">Meer
+                             informatie <span class="visually-hidden">over onze vervangend vervoer
+                                 dekking</span></button>
+                         <div id="modal-vervangendvervoer" class="modal" role="dialog" aria-modal="true">
+                             <div class="modal-content">
+                                <button class="close">
+                                    &times;<span class="visually-hidden">Sluiten</span>
+                                </button>
+                                 <h3>Vervangend Vervoer dekking</h3>
+                                 <p>Met de dekking voor vervangend vervoer krijgt u een vervangende auto als uw eigen
+                                     voertuig
+                                     niet meer kan rijden door schade of een ongeval.</p>
+                             </div>
+                         </div>
+                     </li>
+                     <li>
+                         <input type="checkbox" id="noClaim" name="extraDekking" value="noClaim">
+                         <label for="noClaim">No-Claim Beschermer: &euro; 6,12 per maand
+                             <p>Behoud van no-claim korting.</p>
+                         </label>
+                         <button type="button" class="expand-btn" id="noclaim" aria-expanded="false"
+                             aria-controls="noClaimDesc">Meer
+                             informatie <span class="visually-hidden">over onze no claim bescherming</span></button>
+                         <div id="modal-noclaim" class="modal" role="dialog" aria-modal="true">
+                             <div class="modal-content">
+                                <button class="close">
+                                    &times;<span class="visually-hidden">Sluiten</span>
+                                </button>
+                                 <h3>No-Claim bescherming</h3>
+                                 <p>Met de no-claim beschermer behoudt u uw no-claim korting, zelfs als u een keer
+                                     schade claimt.
+                                     Dit voorkomt dat uw premie stijgt na een schadegeval.</p>
+                             </div>
+                         </div>
+                     </li>
+                 </ul>
+             </div>
+         </fieldset>
+     </form>
+ 
+ 
+ 
+     <script>
+         document.querySelectorAll('.expand-btn').forEach(button => {
+             button.addEventListener('click', () => {
+                 const modal = document.getElementById('modal-' + button.id);
+                 const isExpanded = button.getAttribute('aria-expanded') === 'true';
+ 
+                 // Verberg alle modals
+                 document.querySelectorAll('.modal').forEach(element => {
+                     element.style.display = 'none';
+                 });
+ 
+                 // Zet aria-expanded op false voor alle knoppen
+                 document.querySelectorAll('.expand-btn').forEach(btn => {
+                     btn.setAttribute('aria-expanded', 'false');
+                 });
+ 
+                 // Toon de modal als deze niet al zichtbaar is
+                 if (!isExpanded) {
+                     button.setAttribute('aria-expanded', 'true');
+                     modal.style.display = 'block';
+                 }
+             });
+         });
+ 
+         // Sluit de modal wanneer de gebruiker op de sluitknop klikt
+         document.querySelectorAll('.close').forEach(button => {
+             button.addEventListener('click', () => {
+                 const modal = button.closest('.modal');
+                 modal.style.display = 'none';
+                 document.querySelectorAll('.expand-btn').forEach(btn => {
+                     btn.setAttribute('aria-expanded', 'false');
+                 });
+ 
+                 // Close the specific details element
+                 const detailsElement = document.getElementById('aansprakelijkheidsdekking');
+                 if (detailsElement) {
+                     detailsElement.removeAttribute('open');
+                 }
+             });
+         });
+ 
+         // Sluit de modal wanneer de gebruiker ergens buiten de modal klikt
+         window.addEventListener('click', event => {
+             if (event.target.classList.contains('modal')) {
+                 event.target.style.display = 'none';
+                 document.querySelectorAll('.expand-btn').forEach(btn => {
+                     btn.setAttribute('aria-expanded', 'false');
+                 });
+ 
+                 // Close the specific details element
+                 const detailsElement = document.getElementById('aansprakelijkheidsdekking');
+                 if (detailsElement) {
+                     detailsElement.removeAttribute('open');
+                 }
+             }
+         });
+ 
+         document.addEventListener('DOMContentLoaded', () => {
+             const basisRadio = document.getElementById('basis');
+             const pechhulpCheckbox = document.getElementById('pechhulp');
+ 
+             // Functie om de opties op basis van huidige selectie te disablen of enablen
+             const toggleOptions = () => {
+                 const exclusief = document.getElementById('exclusief');
+                 const eigenrisico = document.getElementById('eigenrisico');
+                 if (basisRadio.checked) {
+                     pechhulpCheckbox.disabled = true;
+                     pechhulpCheckbox.checked = false;
+                     exclusief.style.display = 'block';
+                     eigenrisico.style.display = 'none';
+                 } else {
+                     pechhulpCheckbox.disabled = false;
+                     exclusief.style.display = 'none';
+                     eigenrisico.style.display = 'block';
+                 }
+             };
+ 
+             // Event listener voor het wijzigen van de radiobuttons
+             document.querySelectorAll('input[name="dekkingNiveau"]').forEach(radio => {
+                 radio.addEventListener('change', toggleOptions);
+             });
+ 
+             // Initialiseer de juiste staat bij het laden van de pagina
+             toggleOptions();
+         });
+ 
+         document.addEventListener('DOMContentLoaded', () => {
+             const detailsElements = document.querySelectorAll('details');
+ 
+             detailsElements.forEach(details => {
+                 details.addEventListener('toggle', (event) => {
+                     if (details.open) {
+                         detailsElements.forEach(otherDetails => {
+                             if (otherDetails !== details) {
+                                 otherDetails.removeAttribute('open');
+                             }
+                         });
+                     }
+                 });
+             });
+         });
+     </script>
+ </body>
+ 
+ </html>
