@@ -2,10 +2,13 @@
 <!--
 
  TODO:
- - focus binnen modal houden
+ - focus binnen modal houden (zie code Harmen: https://codepen.io/vavroom/pen/NpRLzE)
  - onnodige aria-attributen verwijderen
- 
+
  - winkelmandje toevoegen met role=status en aria-live
+ - basic layout & responsiveness
+ - test met accessibility dev tool Chrome
+
  -->
  <html lang="nl">
 
@@ -95,7 +98,7 @@
                      <ul>
                          <li>Aansprakelijkheidsdekking</li>
                      </ul>
-                     <button type="button" class="expand-btn" id="aansprakelijkheidsdekking" aria-expanded="false"
+                     <button type="button" class="expand-btn" id="aansprakelijkheidsdekking"
                          aria-controls="modal">Meer
                          informatie <span class="visually-hidden">over onze aansprakelijkheidsdekking</span></button>
                      <div id="modal-aansprakelijkheidsdekking" class="modal" role="dialog" aria-modal="true">
@@ -136,7 +139,7 @@
                          <li>Rechtsbijstand</li>
                          <li>Ruitschade</li>
                      </ul>
-                     <button type="button" class="expand-btn" id="schadeverzekeringinzittenden" aria-expanded="false"
+                     <button type="button" class="expand-btn" id="schadeverzekeringinzittenden"
                          aria-controls="modal">Meer
                          informatie <span class="visually-hidden">over onze dekkingen</span></button>
                      <div id="modal-schadeverzekeringinzittenden" class="modal" role="dialog" aria-modal="true">
@@ -216,7 +219,7 @@
                          <li>Ruitschade</li>
                          <li>Allriskdekking</li>
                      </ul>
-                     <button type="button" class="expand-btn" id="allriskdekking" aria-expanded="false"
+                     <button type="button" class="expand-btn" id="allriskdekking"
                          aria-controls="modal">Meer
                          informatie <span class="visually-hidden">over onze dekkingen</span></button>
                      <div id="modal-allriskdekking" class="modal" role="dialog" aria-modal="true">
@@ -326,7 +329,7 @@
                          <label for="pechhulp">Pechhulp: &euro; 10,96 per maand
                              <p>Hulp bij pech onderweg.</p>
                          </label>
-                         <button type="button" class="expand-btn" id="pechhulp" aria-expanded="false"
+                         <button type="button" class="expand-btn" id="pechhulp"
                              aria-controls="pechhulpDesc">Meer
                              informatie <span class="visually-hidden">over onze pechhulp dekking</span></button>
                          <div id="modal-pechhulp" class="modal" role="dialog" aria-modal="true">
@@ -346,7 +349,7 @@
                          <label for="vervangendVervoer">Vervangend Vervoer: &euro; 4,24 per maand
                              <p>Vervangend vervoer bij schade. </p>
                          </label>
-                         <button type="button" class="expand-btn" id="vervangendvervoer" aria-expanded="false"
+                         <button type="button" class="expand-btn" id="vervangendvervoer"
                              aria-controls="vervangendVervoerDesc">Meer
                              informatie <span class="visually-hidden">over onze vervangend vervoer
                                  dekking</span></button>
@@ -367,7 +370,7 @@
                          <label for="noClaim">No-Claim Beschermer: &euro; 6,12 per maand
                              <p>Behoud van no-claim korting.</p>
                          </label>
-                         <button type="button" class="expand-btn" id="noclaim" aria-expanded="false"
+                         <button type="button" class="expand-btn" id="noclaim"
                              aria-controls="noClaimDesc">Meer
                              informatie <span class="visually-hidden">over onze no claim bescherming</span></button>
                          <div id="modal-noclaim" class="modal" role="dialog" aria-modal="true">
@@ -393,7 +396,7 @@
          document.querySelectorAll('.expand-btn').forEach(button => {
              button.addEventListener('click', () => {
                  const modal = document.getElementById('modal-' + button.id);
-                 const isExpanded = button.getAttribute('aria-expanded') === 'true';
+                //  const isExpanded = button.getAttribute('aria-expanded') === 'true';
  
                  // Verberg alle modals
                  document.querySelectorAll('.modal').forEach(element => {
@@ -402,14 +405,14 @@
  
                  // Zet aria-expanded op false voor alle knoppen
                  document.querySelectorAll('.expand-btn').forEach(btn => {
-                     btn.setAttribute('aria-expanded', 'false');
+                    //  btn.setAttribute('aria-expanded', 'false');
                  });
  
                  // Toon de modal als deze niet al zichtbaar is
-                 if (!isExpanded) {
-                     button.setAttribute('aria-expanded', 'true');
+                //  if (!isExpanded) {
+                    //  button.setAttribute('aria-expanded', 'true');
                      modal.style.display = 'block';
-                 }
+                //  }
              });
          });
  
@@ -418,9 +421,9 @@
              button.addEventListener('click', () => {
                  const modal = button.closest('.modal');
                  modal.style.display = 'none';
-                 document.querySelectorAll('.expand-btn').forEach(btn => {
-                     btn.setAttribute('aria-expanded', 'false');
-                 });
+                //  document.querySelectorAll('.expand-btn').forEach(btn => {
+                //      btn.setAttribute('aria-expanded', 'false');
+                //  });
  
                  // Close the specific details element
                  const detailsElement = document.getElementById('aansprakelijkheidsdekking');
@@ -434,9 +437,9 @@
          window.addEventListener('click', event => {
              if (event.target.classList.contains('modal')) {
                  event.target.style.display = 'none';
-                 document.querySelectorAll('.expand-btn').forEach(btn => {
-                     btn.setAttribute('aria-expanded', 'false');
-                 });
+                //  document.querySelectorAll('.expand-btn').forEach(btn => {
+                //      btn.setAttribute('aria-expanded', 'false');
+                //  });
  
                  // Close the specific details element
                  const detailsElement = document.getElementById('aansprakelijkheidsdekking');
