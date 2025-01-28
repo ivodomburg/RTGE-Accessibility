@@ -5,9 +5,9 @@ Aangepast tov versie 03a:
 - Onnodige aria attributen verwijderd
 - Focus blijft binnen modal
 - Modal sluit ook op ESC
+- Cart toegevoegd met role = status
 
  TODO:
- - winkelmandje toevoegen met role=status en aria-live
  - basic layout & responsiveness
  - test met accessibility dev tool Chrome
 
@@ -94,7 +94,7 @@ Aangepast tov versie 03a:
             <div>
                 <input type="radio" id="basis" name="dekkingNiveau" value="basis" checked>
                 <label for="basis">
-                    WA: &euro; 30,35 per maand
+                    WA: &euro; 30,25 per maand
                     <div>Voor oudere voertuigen of als je niet zoveel rijdt; dekt schade die u aan anderen
                         toebrengt.</div>
                     <ul>
@@ -219,8 +219,8 @@ Aangepast tov versie 03a:
                 </label>
             </div>
             <div>
-                <input type="radio" id="premie" name="dekkingNiveau" value="premie">
-                <label for="premie">
+                <input type="radio" id="allrisk" name="dekkingNiveau" value="premie">
+                <label for="allrisk">
                     All-Risk: &euro; 40,78 per maand
                     <div>Volledig ontzorgd; dekt ook schade aan uw eigen voertuig.</div>
                     <ul>
@@ -403,7 +403,10 @@ Aangepast tov versie 03a:
         </fieldset>
     </form>
 
-
+    <div role="status" aria-atomic="true">
+        <h2>Uw premie</h2>
+        <p>&euro; <span id="premium">30,25</span> per maand</p>
+    </div>
 
     <script>
         // Variable for storing the last focused element
@@ -530,9 +533,72 @@ Aangepast tov versie 03a:
                 }
             };
 
+            // Functie om premie te berekenen
+            const calculatePremium = () => {
+                const basisRadio = document.getElementById("basis");
+                const standaardRadio = document.getElementById("standaard");
+                const allriskRadio = document.getElementById("allrisk");
+
+                const ir0 = document.getElementById("ir0");
+                const ir150 = document.getElementById("ir150");
+                const ir300 = document.getElementById("ir300");
+                const ir450 = document.getElementById("ir450");
+
+                const pechhulpCheckbox = document.getElementById("pechhulp");
+                const vervangendvervoerCheckbox = document.getElementById("vervangendVervoer");
+                const noclaimCheckbox = document.getElementById("noClaim");
+
+                // basisdekking
+                var premium = 0;
+                if (basisRadio.checked) { 
+                    premium += 30.25; 
+                }
+                else if (standaardRadio.checked) { 
+                    premium += 34.77; 
+                }
+                else if (allriskRadio.checked) { 
+                    premium += 40.78; 
+                }
+
+                // eigen risico
+                if (ir0.checked) {
+                    premium += 15;
+                } else if (ir150.checked) {
+                    premium += 10;
+                } else if (ir300.checked) {
+                    premium += 5;
+                } else if (ir450.checked) {
+                    premium += 0
+                }
+                
+                // extra dekkingen
+                if (pechhulpCheckbox.checked) {
+                    premium += 10.96;
+                }
+                if (vervangendvervoerCheckbox.checked) {
+                    premium += 4.24;
+                }
+                if (noclaimCheckbox.checked) {
+                    premium += 6.12;
+                }
+
+                premium = Math.round(premium * 100)/100;
+                return premium;
+            };
+
+            // Functie om de premie bij te werken
+            const updatePremium = () => {
+                const cart = document.getElementById('premium');
+                const premium = calculatePremium();
+                cart.innerHTML = premium;
+            };
+
             // Event listener voor het wijzigen van de radiobuttons
-            document.querySelectorAll('input[name="dekkingNiveau"]').forEach(radio => {
-                radio.addEventListener('change', toggleOptions);
+            document.querySelectorAll('input[name="dekkingNiveau"], input[name="extraDekking"], input[name="eigenRisico"]').forEach(radio => {
+                radio.addEventListener('change', () => {
+                    toggleOptions();
+                    updatePremium();
+                });
             });
 
             // Initialiseer de juiste staat bij het laden van de pagina
