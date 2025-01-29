@@ -8,6 +8,7 @@ Aangepast tov versie 03a:
 - Cart toegevoegd met role = status
 - Order lines op cart
 - Basic layout
+- aria-controls="modal" weggehaald van buttons
 
  TODO:
  - kassabon regels toevoegen aan cart
@@ -148,8 +149,7 @@ Aangepast tov versie 03a:
                         <ul>
                             <li>Aansprakelijkheidsdekking</li>
                         </ul>
-                        <button type="button" class="expand-btn" id="aansprakelijkheidsdekking"
-                            aria-controls="modal">Meer
+                        <button type="button" class="expand-btn" id="aansprakelijkheidsdekking">Meer
                             informatie <span class="visually-hidden">over onze aansprakelijkheidsdekking</span></button>
                         <div id="modal-aansprakelijkheidsdekking" class="modal" role="dialog" aria-modal="true">
                             <div class="modal-content">
@@ -199,8 +199,7 @@ Aangepast tov versie 03a:
                             <li>Rechtsbijstand</li>
                             <li>Ruitschade</li>
                         </ul>
-                        <button type="button" class="expand-btn" id="schadeverzekeringinzittenden"
-                            aria-controls="modal">Meer
+                        <button type="button" class="expand-btn" id="schadeverzekeringinzittenden">Meer
                             informatie <span class="visually-hidden">over onze dekkingen</span></button>
                         <div id="modal-schadeverzekeringinzittenden" class="modal" role="dialog" aria-modal="true">
                             <div class="modal-content">
@@ -298,7 +297,7 @@ Aangepast tov versie 03a:
                             <li>Ruitschade</li>
                             <li>Allriskdekking</li>
                         </ul>
-                        <button type="button" class="expand-btn" id="allriskdekking" aria-controls="modal">Meer
+                        <button type="button" class="expand-btn" id="allriskdekking">Meer
                             informatie <span class="visually-hidden">over onze dekkingen</span></button>
                         <div id="modal-allriskdekking" class="modal" role="dialog" aria-modal="true">
                             <div class="modal-content">
@@ -721,7 +720,7 @@ Aangepast tov versie 03a:
                     lines += "<li>Pechhulp: <span class=\"price\">&euro; 10,96</span></li>";
                 }
                 if (vervangendvervoerCheckbox.checked) {
-                    lines += "<li>Vervangend Vervoer: <span class=\"price\">&euro; 4,24</span></li>";
+                    lines += "<li>Vervangend vervoer: <span class=\"price\">&euro; 4,24</span></li>";
                 }
                 if (noclaimCheckbox.checked) {
                     lines += "<li>No-Claim Beschermer: <span class=\"price\">&euro; 6,12</span></li>";
