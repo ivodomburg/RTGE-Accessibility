@@ -6,10 +6,10 @@ Aangepast tov versie 03a:
 - Focus blijft binnen modal
 - Modal sluit ook op ESC
 - Cart toegevoegd met role = status
+- Basic layout
 
  TODO:
  - kassabon regels toevoegen aan cart
- - basic layout & responsiveness
  - test met accessibility dev tool Chrome
  - lijstje maken met gemaakte afwegingen, leerpunten en keuzes tav accessibility rond dit component
 
@@ -24,7 +24,7 @@ Aangepast tov versie 03a:
     <title>Wijziging doorgeven voor Autoverzekering Dacia Duster GT-564-B</title>
     <style>
         body {
-            margin-right: 250px;
+            margin-right: 270px;
         }
 
         /* Voeg hier je stijlen toe */
@@ -93,9 +93,19 @@ Aangepast tov versie 03a:
             position: fixed;
             top: 235px;
             right: 10px;
-            width: 200px;
+            width: 220px;
             border: 1px solid black;
             padding: 10px;
+        }
+
+        .cart ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .cart .price {
+            float: right;
         }
 
         .container {
@@ -107,6 +117,8 @@ Aangepast tov versie 03a:
         }
 
         .item {
+            background-color: #eee;
+            padding: 5px;
             flex: 1;
         }
     </style>
@@ -477,7 +489,8 @@ Aangepast tov versie 03a:
     <div class="cart" role="status" aria-atomic="true">
         <ul id=""></ul>
         <h2>Uw premie</h2>
-        <p>&euro; <span id="premium">30,25</span> per maand</p>
+        <ul id="lines"></ul>
+        <p>Per maand: <span class="price" id="premium">&euro; 30,25</span></p>
     </div>
 
     <script>
@@ -633,14 +646,16 @@ Aangepast tov versie 03a:
                 }
 
                 // eigen risico
-                if (ir0.checked) {
-                    premium += 15;
-                } else if (ir150.checked) {
-                    premium += 10;
-                } else if (ir300.checked) {
-                    premium += 5;
-                } else if (ir450.checked) {
-                    premium += 0
+                if (!basisRadio.checked) {
+                    if (ir0.checked) {
+                        premium += 15;
+                    } else if (ir150.checked) {
+                        premium += 10;
+                    } else if (ir300.checked) {
+                        premium += 5;
+                    } else if (ir450.checked) {
+                        premium += 0
+                    }
                 }
 
                 // extra dekkingen
@@ -658,18 +673,73 @@ Aangepast tov versie 03a:
                 return premium;
             };
 
-            // Functie om de premie bij te werken
-            const updatePremium = () => {
-                const cart = document.getElementById('premium');
+            const createLines = () => {
+                const basisRadio = document.getElementById("basis");
+                const standaardRadio = document.getElementById("standaard");
+                const allriskRadio = document.getElementById("allrisk");
+
+                const ir0 = document.getElementById("ir0");
+                const ir150 = document.getElementById("ir150");
+                const ir300 = document.getElementById("ir300");
+                const ir450 = document.getElementById("ir450");
+
+                const pechhulpCheckbox = document.getElementById("pechhulp");
+                const vervangendvervoerCheckbox = document.getElementById("vervangendVervoer");
+                const noclaimCheckbox = document.getElementById("noClaim");
+
+                // basisdekking
+                var lines = "";
+                if (basisRadio.checked) {
+                    lines += "<li>WA basisdekking: <span class=\"price\">&euro; 30,25</span></li>";
+                }
+                else if (standaardRadio.checked) {
+                    lines += "<li>WA Plus basisdekking: <span class=\"price\">&euro; 34,77</span></li>";
+                }
+                else if (allriskRadio.checked) {
+                    lines += "<li>All-Risk basisdekking: <span class=\"price\">&euro; 40,78</span></li>";
+                }
+
+                // eigen risico
+                if (!basisRadio.checked) {
+                    if (ir0.checked) {
+                        lines += "<li>Eigen risico &euro; 0,-: <span class=\"price\">&euro; 15,00</span></li>";
+                    } else if (ir150.checked) {
+                        lines += "<li>Eigen risico &euro; 150,-: <span class=\"price\">&euro; 10,00</span></li>";
+                    } else if (ir300.checked) {
+                        lines += "<li>Eigen risico &euro; 300,-: <span class=\"price\">&euro; 5,00</span></li>";
+                    } else if (ir450.checked) {
+                        lines += "<li>Eigen risico &euro; 450,-: <span class=\"price\">&euro; 0,00</span></li>";
+                    }
+                }
+
+                // extra dekkingen
+                if (pechhulpCheckbox.checked) {
+                    lines += "<li>Pechhulp: <span class=\"price\">&euro; 10,96</span></li>";
+                }
+                if (vervangendvervoerCheckbox.checked) {
+                    lines += "<li>Vervangend vervoer: <span class=\"price\">&euro; 4,24</span></li>";
+                }
+                if (noclaimCheckbox.checked) {
+                    lines += "<li>Vervangend vervoer: <span class=\"price\">&euro; 6,12</span></li>";
+                }
+                return lines;  
+            };
+
+            // Functie om de cart bij te werken
+            const updateCart = () => {
+                const premiumElm = document.getElementById('premium');
+                const linesElm = document.getElementById('lines');
                 const premium = calculatePremium();
-                cart.innerHTML = premium;
+                const lines = createLines();
+                premiumElm.innerHTML = "&euro; " + premium;
+                linesElm.innerHTML = lines;
             };
 
             // Event listener voor het wijzigen van de radiobuttons
             document.querySelectorAll('input[name="dekkingNiveau"], input[name="extraDekking"], input[name="eigenRisico"]').forEach(radio => {
                 radio.addEventListener('change', () => {
                     toggleOptions();
-                    updatePremium();
+                    updateCart();
                 });
             });
 
