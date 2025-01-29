@@ -8,8 +8,14 @@ Aangepast tov versie 03a:
 - Cart toegevoegd met role = status
 
  TODO:
+ - kassabon regels toevoegen aan cart
  - basic layout & responsiveness
  - test met accessibility dev tool Chrome
+ - lijstje maken met gemaakte afwegingen, leerpunten en keuzes tav accessibility rond dit component
+
+ Vragen:
+ - moeten we nog iets met het verschijnen/verdwijnen van het eigen risico?
+ - kassabon incl regels oplezen bij elke wijziging of alleen de regel die is toegevoegd of verwijderd?
 
  -->
 <html lang="nl">
@@ -17,6 +23,10 @@ Aangepast tov versie 03a:
 <head>
     <title>Wijziging doorgeven voor Autoverzekering Dacia Duster GT-564-B</title>
     <style>
+        body {
+            margin-right: 250px;
+        }
+
         /* Voeg hier je stijlen toe */
         .modal {
             display: none;
@@ -76,6 +86,16 @@ Aangepast tov versie 03a:
             padding: 0;
             position: absolute;
             width: 1px;
+        }
+
+        .cart {
+            display: block;
+            position: fixed;
+            top: 250px;
+            right: 10px;
+            width: 200px;
+            border: 1px solid black;
+            padding: 10px;
         }
     </style>
 </head>
@@ -403,7 +423,8 @@ Aangepast tov versie 03a:
         </fieldset>
     </form>
 
-    <div role="status" aria-atomic="true">
+    <div class="cart" role="status" aria-atomic="true">
+        <ul id=""></ul>
         <h2>Uw premie</h2>
         <p>&euro; <span id="premium">30,25</span> per maand</p>
     </div>
