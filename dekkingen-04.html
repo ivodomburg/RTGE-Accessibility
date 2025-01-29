@@ -6,6 +6,7 @@ Aangepast tov versie 03a:
 - Focus blijft binnen modal
 - Modal sluit ook op ESC
 - Cart toegevoegd met role = status
+- Order lines op cart
 - Basic layout
 
  TODO:
@@ -102,6 +103,8 @@ Aangepast tov versie 03a:
             list-style: none;
             margin: 0;
             padding: 0;
+            border-bottom: 1px solid black;
+            line-height: 1.5em;
         }
 
         .cart .price {
@@ -487,10 +490,11 @@ Aangepast tov versie 03a:
     </form>
 
     <div class="cart" role="status" aria-atomic="true">
-        <ul id=""></ul>
         <h2>Uw premie</h2>
-        <ul id="lines"></ul>
-        <p>Per maand: <span class="price" id="premium">&euro; 30,25</span></p>
+        <ul id="lines">
+            <li>WA basisdekking: <span class="price">&euro; 30,25</span></li>
+        </ul>
+        <p>U betaalt per maand: <span class="price" id="premium">&euro; 30,25</span></p>
     </div>
 
     <script>
@@ -702,13 +706,13 @@ Aangepast tov versie 03a:
                 // eigen risico
                 if (!basisRadio.checked) {
                     if (ir0.checked) {
-                        lines += "<li>Eigen risico &euro; 0,-: <span class=\"price\">&euro; 15,00</span></li>";
+                        lines += "<li>Eigen risico 0: <span class=\"price\">&euro; 15,00</span></li>";
                     } else if (ir150.checked) {
-                        lines += "<li>Eigen risico &euro; 150,-: <span class=\"price\">&euro; 10,00</span></li>";
+                        lines += "<li>Eigen risico 150: <span class=\"price\">&euro; 10,00</span></li>";
                     } else if (ir300.checked) {
-                        lines += "<li>Eigen risico &euro; 300,-: <span class=\"price\">&euro; 5,00</span></li>";
+                        lines += "<li>Eigen risico 300: <span class=\"price\">&euro; 5,00</span></li>";
                     } else if (ir450.checked) {
-                        lines += "<li>Eigen risico &euro; 450,-: <span class=\"price\">&euro; 0,00</span></li>";
+                        lines += "<li>Eigen risico 450: <span class=\"price\">&euro; 0,00</span></li>";
                     }
                 }
 
