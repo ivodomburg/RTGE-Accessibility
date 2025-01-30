@@ -2,11 +2,13 @@
 <!--
 
 Aangepast tov versie 04:
-- 
+- basisdekkingen in ul gezet, zodat AT kan zien hoeveel opties er zijn.
 
  TODO:
  - content gelijktrekken met OHRA liveomgeving
  - design volgens RTGE multilabel (te beginnen bij OHRA)
+
+ Vragen:
 
  -->
 <html lang="nl">
@@ -102,6 +104,9 @@ Aangepast tov versie 04:
         }
 
         .container {
+            list-style: none;
+            margin: 0;
+            padding: 0;
             display: flex;
             flex-flow: row wrap;
             justify-content: center;
@@ -128,8 +133,8 @@ Aangepast tov versie 04:
     <form>
         <fieldset>
             <legend>Kies jouw basisdekking</legend>
-            <div class="container">
-                <div class="item">
+            <ul class="container">
+                <li class="item">
                     <input type="radio" id="basis" name="dekkingNiveau" value="basis" checked>
                     <label for="basis">
                         WA: &euro; 40,33 per maand
@@ -165,8 +170,8 @@ Aangepast tov versie 04:
                             </div>
                         </div>
                     </label>
-                </div>
-                <div class="item">
+                </li>
+                <li class="item">
                     <input type="radio" id="standaard" name="dekkingNiveau" value="standaard">
                     <label for="standaard">
                         WA Plus: &euro; 43,44 per maand
@@ -220,8 +225,8 @@ Aangepast tov versie 04:
                             </div>
                         </div>
                     </label>
-                </div>
-                <div class="item">
+                </li>
+                <li class="item">
                     <input type="radio" id="allrisk" name="dekkingNiveau" value="premie">
                     <label for="allrisk">
                         All-Risk: &euro; 48,09 per maand
@@ -283,8 +288,8 @@ Aangepast tov versie 04:
                                 </details>
                             </div>
                     </label>
-                </div>
-            </div>
+                </li>
+            </ul>
         </fieldset>
         <fieldset id="eigenrisico" hidden>
             <legend>Kies uw eigen risico</legend>
