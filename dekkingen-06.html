@@ -5,6 +5,7 @@ Aangepast tov versie 05:
 - titel kassabon naar h2 niveau getild
 - aria-live beperkt tot totaalpremie
 - &times; character hidden for screenreaders
+- volgorde heading and close button in modals omgedraaid
 
  Vragen:
 
@@ -160,6 +161,20 @@ Aangepast tov versie 05:
             /* Voeg scroll toe als de inhoud groter is dan het scherm */
             background-color: rgba(0, 0, 0, 0.5);
             /* Semi-transparante achtergrond */
+        }
+
+        .modal-header {
+            display: flex;
+            flex-flow: row nowrap;
+        }
+
+        .modal-header h3 {
+            display: flex;
+            flex: auto;
+        }
+
+        .modal-header button {
+            height: fit-content;
         }
 
         .modal-content {
@@ -400,10 +415,12 @@ Aangepast tov versie 05:
                                     <div id="modal-aansprakelijkheidsdekking" class="modal" role="dialog"
                                         aria-modal="true">
                                         <div class="modal-content">
-                                            <button type="button" class="close">
-                                                <span aria-hidden="true">&times;</span><span class="visually-hidden">Sluiten</span>
-                                            </button>
-                                            <h3>WA basisdekking</h3>
+                                            <div class="modal-header">
+                                                <h3>WA basisdekking</h3>
+                                                <button type="button" class="close">
+                                                    <span aria-hidden="true">&times;</span><span class="visually-hidden">Sluiten</span>
+                                                </button>
+                                            </div>
                                             <p>Een WA-verzekering (Wettelijke Aansprakelijkheid) dekt schade die je aan
                                                 anderen
                                                 toebrengt bij een ongeval. Deze verzekering is verplicht voor alle
@@ -452,10 +469,12 @@ Aangepast tov versie 05:
                                     <div id="modal-schadeverzekeringinzittenden" class="modal" role="dialog"
                                         aria-modal="true">
                                         <div class="modal-content">
-                                            <button type="button" class="close">
-                                                <span aria-hidden="true">&times;</span><span class="visually-hidden">Sluiten</span>
-                                            </button>
-                                            <h3>WA Plus basisdekking</h3>
+                                            <div class="modal-header">
+                                                <h3>WA Plus basisdekking</h3>
+                                                <button type="button" class="close">
+                                                    <span aria-hidden="true">&times;</span><span class="visually-hidden">Sluiten</span>
+                                                </button>
+                                            </div>
                                             <p>Een WA Plus-verzekering biedt extra zekerheid voor mensen die regelmatig
                                                 op
                                                 de
@@ -528,10 +547,12 @@ Aangepast tov versie 05:
                                             basisdekking</span></button>
                                     <div id="modal-allriskdekking" class="modal" role="dialog" aria-modal="true">
                                         <div class="modal-content">
-                                            <button type="button" class="close">
-                                                <span aria-hidden="true">&times;</span><span class="visually-hidden">Sluiten</span>
-                                            </button>
-                                            <h3>All-Risk basisdekking</h3>
+                                            <div class="modal-header">
+                                                <h3>All-Risk basisdekking</h3>
+                                                <button type="button" class="close">
+                                                    <span aria-hidden="true">&times;</span><span class="visually-hidden">Sluiten</span>
+                                                </button>
+                                            </div>
                                             <p>Een All-risk verzekering biedt de meest uitgebreide dekking voor je
                                                 voertuig.
                                                 Naast
@@ -633,10 +654,12 @@ Aangepast tov versie 05:
                                             pakket</span></button>
                                     <div id="modal-aanvullend" class="modal" role="dialog" aria-modal="true">
                                         <div class="modal-content">
-                                            <button type="button" class="close">
-                                                <span aria-hidden="true">&times;</span><span class="visually-hidden">Sluiten</span>
-                                            </button>
-                                            <h3>Aanvullend Pakket</h3>
+                                            <div class="modal-header">
+                                                <h3>Aanvullend Pakket</h3>
+                                                <button type="button" class="close">
+                                                    <span aria-hidden="true">&times;</span><span class="visually-hidden">Sluiten</span>
+                                                </button>
+                                            </div>
                                             <p>De basisdekking WA Plus en de All-Risk kun je eenvoudig uitbreiden met de
                                                 extra
                                                 dekking
@@ -677,10 +700,12 @@ Aangepast tov versie 05:
                                             dekking</span></button>
                                     <div id="modal-ongevalleninzittenden" class="modal" role="dialog" aria-modal="true">
                                         <div class="modal-content">
-                                            <button type="button" class="close">
-                                                <span aria-hidden="true">&times;</span><span class="visually-hidden">Sluiten</span>
-                                            </button>
-                                            <h3>Ongevallen Inzittenden</h3>
+                                            <div class="modal-header">
+                                                <h3>Ongevallen Inzittenden</h3>
+                                                <button type="button" class="close">
+                                                    <span aria-hidden="true">&times;</span><span class="visually-hidden">Sluiten</span>
+                                                </button>
+                                            </div>
                                             <p>Je kunt een ongeval krijgen met je auto. Stel dat jij of je passagiers
                                                 blijvend
                                                 invalide
@@ -709,10 +734,12 @@ Aangepast tov versie 05:
                                             dekking</span></button>
                                     <div id="modal-schadeinzittenden" class="modal" role="dialog" aria-modal="true">
                                         <div class="modal-content">
-                                            <button class="close">
-                                                <span aria-hidden="true">&times;</span><span class="visually-hidden">Sluiten</span>
-                                            </button>
-                                            <h3>Schade Inzittenden</h3>
+                                            <div class="modal-header">
+                                                <h3>Schade Inzittenden</h3>
+                                                <button class="close">
+                                                    <span aria-hidden="true">&times;</span><span class="visually-hidden">Sluiten</span>
+                                                </button>
+                                            </div>
                                             <p>Krijg je een ongeval met de auto? Met deze extra dekking vergoedt OHRA de
                                                 werkelijke
                                                 schade
@@ -736,10 +763,12 @@ Aangepast tov versie 05:
                                             dekking</span></button>
                                     <div id="modal-rechtsbijstand" class="modal" role="dialog" aria-modal="true">
                                         <div class="modal-content">
-                                            <button type="button" class="close">
-                                                <span aria-hidden="true">&times;</span><span class="visually-hidden">Sluiten</span>
-                                            </button>
-                                            <h3>Rechtsbijstand</h3>
+                                            <div class="modal-header">
+                                                <h3>Rechtsbijstand</h3>
+                                                <button type="button" class="close">
+                                                    <span aria-hidden="true">&times;</span><span class="visually-hidden">Sluiten</span>
+                                                </button>
+                                            </div>
                                             <p>Vaak het onduidelijk wie schuldig is aan een verkeersongeval. Zonder deze
                                                 module moet
                                                 je
@@ -765,10 +794,12 @@ Aangepast tov versie 05:
                                             dekking</span></button>
                                     <div id="modal-pechhulp" class="modal" role="dialog" aria-modal="true">
                                         <div class="modal-content">
-                                            <button type="button" class="close">
-                                                <span aria-hidden="true">&times;</span><span class="visually-hidden">Sluiten</span>
-                                            </button>
-                                            <h3>Pechhulp Nederland</h3>
+                                            <div class="modal-header">
+                                                <h3>Pechhulp Nederland</h3>
+                                                <button type="button" class="close">
+                                                    <span aria-hidden="true">&times;</span><span class="visually-hidden">Sluiten</span>
+                                                </button>
+                                            </div>
                                             <p>Kies je voor de extra dekking Pechhulp Nederland, dan kun je rekenen op:
                                             </p>
                                             <ul class="itemlist">
