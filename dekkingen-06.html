@@ -3,6 +3,7 @@
 
 Aangepast tov versie 05:
 - titel kassabon naar h2 niveau getild
+- aria-live beperkt tot totaalpremie
 
  Vragen:
 
@@ -784,12 +785,12 @@ Aangepast tov versie 05:
             </div>
         </div>
 
-        <div class="cart" role="status" aria-live="polite" aria-atomic="true">
+        <div class="cart">
             <h2>Jouw premie</h2>
             <ul id="lines">
                 <li>WA basisdekking: <span class="price">&euro; 40,33</span></li>
             </ul>
-            <p class="total">Je betaalt per maand: <span class="price" id="premium">&euro; 40,33</span></p>
+            <p class="total" role="status" aria-live="polite">Je betaalt per maand: <span class="price" id="premium">&euro; 40,33</span></p>
         </div>
 
     </div>
